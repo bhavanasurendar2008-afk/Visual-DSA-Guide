@@ -1,0 +1,213 @@
+import type { QuizQuestion } from '../types';
+
+export const quizQuestions: QuizQuestion[] = [
+  // Arrays
+  {
+    id: 'q1',
+    topicId: 'arrays',
+    question: 'What is the time complexity of accessing an element by index in an array?',
+    options: ['O(n)', 'O(log n)', 'O(1)', 'O(n²)'],
+    correctIndex: 2,
+    explanation: 'Arrays store elements in contiguous memory. Accessing by index uses direct address calculation: base_address + index × element_size. This is always a single operation regardless of array size — O(1).',
+    difficulty: 'easy',
+  },
+  {
+    id: 'q2',
+    topicId: 'arrays',
+    question: 'What happens to array size in most static languages when it is full?',
+    options: ['It automatically doubles', 'You get an IndexOutOfBounds error', 'Extra memory is allocated', 'The oldest element is removed'],
+    correctIndex: 1,
+    explanation: 'In static arrays (like in C++), the size is fixed at declaration. Attempting to insert beyond capacity causes an IndexOutOfBounds or buffer overflow error. Dynamic arrays (like Python lists) do auto-resize, but static arrays do not.',
+    difficulty: 'easy',
+  },
+  {
+    id: 'q3',
+    topicId: 'arrays',
+    question: 'What is the worst-case time complexity of inserting an element at the beginning of an array?',
+    options: ['O(1)', 'O(log n)', 'O(n)', 'O(n²)'],
+    correctIndex: 2,
+    explanation: 'Inserting at position 0 requires shifting every existing element one position to the right to make room. If the array has n elements, all n must shift — giving O(n) worst-case time complexity.',
+    difficulty: 'medium',
+  },
+  // Linked Lists
+  {
+    id: 'q4',
+    topicId: 'linked-lists',
+    question: 'What does each node in a singly linked list contain?',
+    options: [
+      'Data only',
+      'Data and a pointer to the next node',
+      'Data and pointers to both next and previous nodes',
+      'Only a pointer to the next node',
+    ],
+    correctIndex: 1,
+    explanation: 'In a singly linked list, each node has exactly two parts: the data field (which holds the value) and a "next" pointer (which holds the memory address of the next node). Doubly linked lists additionally store a "prev" pointer.',
+    difficulty: 'easy',
+  },
+  {
+    id: 'q5',
+    topicId: 'linked-lists',
+    question: 'What is the time complexity of deleting a node at the tail of a singly linked list (without a tail pointer)?',
+    options: ['O(1)', 'O(log n)', 'O(n)', 'O(n²)'],
+    correctIndex: 2,
+    explanation: 'To delete the last node, you must traverse the entire list to find the second-to-last node and update its next pointer to null. Without a tail pointer this traversal takes O(n). With a tail pointer, you still need O(n) because you need the node before the tail.',
+    difficulty: 'medium',
+  },
+  // Stacks
+  {
+    id: 'q6',
+    topicId: 'stacks',
+    question: 'Which real-world scenario best models a stack?',
+    options: ['People waiting in a bank queue', 'Books stacked on a table', 'Cars on a circular road', 'Files stored in a folder'],
+    correctIndex: 1,
+    explanation: 'A stack of books is the classic analogy for a stack data structure. You can only add (push) a book on top, and you can only remove (pop) the topmost book. This is Last-In, First-Out (LIFO) behaviour.',
+    difficulty: 'easy',
+  },
+  {
+    id: 'q7',
+    topicId: 'stacks',
+    question: 'What exception is thrown when you call pop() on an empty stack?',
+    options: ['NullPointerException', 'IndexOutOfBoundsException', 'StackOverflowError', 'EmptyStackException / Underflow'],
+    correctIndex: 3,
+    explanation: 'Calling pop() on an empty stack causes a "stack underflow" error (also called EmptyStackException in Java). Stack overflow is the opposite: it occurs when too many elements are pushed and memory is exhausted.',
+    difficulty: 'medium',
+  },
+  // Queues
+  {
+    id: 'q8',
+    topicId: 'queues',
+    question: 'Which ordering principle does a queue follow?',
+    options: ['LIFO — Last In, First Out', 'FIFO — First In, First Out', 'Random order', 'Priority order'],
+    correctIndex: 1,
+    explanation: 'Queues follow FIFO — the first element added is the first to be removed. Think of a real-world queue (line) at a ticket counter: the person who arrives first is served first.',
+    difficulty: 'easy',
+  },
+  {
+    id: 'q9',
+    topicId: 'queues',
+    question: 'In a circular queue of size n, what is the formula for the next index after position i?',
+    options: ['i + 1', '(i + 1) % n', '(i - 1 + n) % n', 'i × 2'],
+    correctIndex: 1,
+    explanation: 'A circular queue uses modular arithmetic to wrap around. After the last position (n-1), the next position is 0. The formula (i + 1) % n handles this wrapping correctly for all positions.',
+    difficulty: 'medium',
+  },
+  // Trees
+  {
+    id: 'q10',
+    topicId: 'trees',
+    question: 'In an in-order traversal of a Binary Search Tree, which order are nodes visited?',
+    options: ['Root → Left → Right', 'Right → Root → Left', 'Left → Root → Right', 'Left → Right → Root'],
+    correctIndex: 2,
+    explanation: 'In-order traversal visits: Left subtree first, then Root, then Right subtree. In a BST this produces elements in sorted (ascending) order — a key property useful for sorting and range queries.',
+    difficulty: 'medium',
+  },
+  {
+    id: 'q11',
+    topicId: 'trees',
+    question: 'A perfect binary tree has 15 nodes. How many levels does it have?',
+    options: ['3', '4', '14', '7'],
+    correctIndex: 1,
+    explanation: 'A perfect binary tree fills every level completely. The level counts are 1 + 2 + 4 + 8 = 15, so the tree has 4 levels (root at level 1). Note: if your course defines height as the number of edges on the longest root-to-leaf path, the height is 3 — but the number of levels is still 4.',
+    difficulty: 'hard',
+  },
+  // Graphs
+  {
+    id: 'q12',
+    topicId: 'graphs',
+    question: 'Which graph traversal algorithm uses a queue?',
+    options: ['Depth First Search (DFS)', 'Breadth First Search (BFS)', 'Dijkstra\'s Algorithm only', 'Binary Search'],
+    correctIndex: 1,
+    explanation: 'BFS explores all neighbours at the current depth level before moving deeper. It uses a queue to track which node to visit next. DFS uses a stack (or recursion). BFS is ideal for finding shortest paths in unweighted graphs.',
+    difficulty: 'easy',
+  },
+  {
+    id: 'q13',
+    topicId: 'graphs',
+    question: 'How many edges can a directed graph with 5 vertices have at most?',
+    options: ['10', '20', '25', '15'],
+    correctIndex: 1,
+    explanation: 'In a directed graph, each ordered pair (u, v) can have an edge from u to v AND from v to u. For n vertices: maximum edges = n × (n - 1) = 5 × 4 = 20. In undirected graphs it is n(n-1)/2 = 10.',
+    difficulty: 'hard',
+  },
+  // Sorting
+  {
+    id: 'q14',
+    topicId: 'sorting',
+    question: 'Which sorting algorithm has the best average-case time complexity?',
+    options: ['Bubble Sort — O(n²)', 'Selection Sort — O(n²)', 'Merge Sort — O(n log n)', 'Insertion Sort — O(n²)'],
+    correctIndex: 2,
+    explanation: 'Merge Sort consistently achieves O(n log n) in all cases (best, average, worst). Quick Sort also averages O(n log n) but has O(n²) worst case. Bubble, Selection, and Insertion Sort are all O(n²) on average.',
+    difficulty: 'medium',
+  },
+  // Big-O
+  {
+    id: 'q15',
+    topicId: 'big-o',
+    question: 'Which Big-O notation represents the most efficient algorithm for large inputs?',
+    options: ['O(n²)', 'O(n log n)', 'O(n)', 'O(log n)'],
+    correctIndex: 3,
+    explanation: 'O(log n) grows the slowest of the four options. For 1,000,000 elements: O(log n) ≈ 20 operations, O(n) = 1,000,000, O(n log n) ≈ 20,000,000, O(n²) = 1,000,000,000,000. O(1) is even faster but was not listed.',
+    difficulty: 'easy',
+  },
+  // Additional questions
+  {
+    id: 'q16',
+    topicId: 'sorting',
+    question: 'Bubble Sort is called "bubble" sort because:',
+    options: [
+      'It was invented by a person named Bubble',
+      'Larger elements "bubble up" to their correct position with each pass',
+      'It creates bubbles of sorted subarrays',
+      'The algorithm looks like bubbles in a chart',
+    ],
+    correctIndex: 1,
+    explanation: 'In each pass through the array, Bubble Sort compares adjacent elements and swaps them if out of order. Larger values progressively move ("bubble up") toward the end of the array, like air bubbles rising in water.',
+    difficulty: 'easy',
+  },
+  {
+    id: 'q17',
+    topicId: 'big-o',
+    question: 'What is the space complexity of recursive Merge Sort?',
+    options: ['O(1)', 'O(log n)', 'O(n)', 'O(n log n)'],
+    correctIndex: 2,
+    explanation: 'Merge Sort requires O(n) auxiliary space to hold the temporary merged arrays during each merge step. The recursion depth is O(log n) for the call stack, but the dominant space usage is O(n) for the merge buffers.',
+    difficulty: 'hard',
+  },
+  {
+    id: 'q18',
+    topicId: 'linked-lists',
+    question: 'What advantage does a linked list have over an array for insertions?',
+    options: [
+      'Faster random access',
+      'Less memory usage',
+      'O(1) insertion when you have a pointer to the position',
+      'Better cache performance',
+    ],
+    correctIndex: 2,
+    explanation: 'In a linked list, if you already have a pointer to the node before the insertion point, you only need to update two pointers — this is O(1). Arrays require shifting all subsequent elements, which is O(n). However, finding the position itself may still be O(n) in a linked list.',
+    difficulty: 'medium',
+  },
+  {
+    id: 'q19',
+    topicId: 'trees',
+    question: 'Which traversal produces output that can reconstruct the original binary tree?',
+    options: ['In-order only', 'Pre-order + In-order together', 'Post-order only', 'Level-order only'],
+    correctIndex: 1,
+    explanation: 'A binary tree cannot be uniquely reconstructed from any single traversal alone. However, providing Pre-order + In-order traversals together provides enough information to uniquely reconstruct the original tree. Similarly, Post-order + In-order also works.',
+    difficulty: 'hard',
+  },
+  {
+    id: 'q20',
+    topicId: 'stacks',
+    question: 'Which application commonly uses a stack internally?',
+    options: ['OS scheduler', 'Browser history navigation (Back button)', 'Printer spooler', 'Network packet routing'],
+    correctIndex: 1,
+    explanation: 'The browser back button uses a stack. Each page you visit is pushed onto a stack. When you press Back, the current page is popped and you return to the previous one. This is a real-world LIFO application of stacks.',
+    difficulty: 'medium',
+  },
+];
+
+export const getQuestionsByTopic = (topicId: string) =>
+  quizQuestions.filter(q => q.topicId === topicId);
+
+export const getAllQuestions = () => quizQuestions;
